@@ -148,7 +148,11 @@ Default sanitizer is
 
   local $Cache::Memcached::Fast::Safe::SANITIZE_METHOD = sub {
       my $key = shift;
-      uri_escape($key,"\x00-\x20\x7f-\xff");
+      $key = uri_escape($key,"\x00-\x20\x7f-\xff");
+      if ( length $key > 200 ) {
+          $key = sha1_hex($key);
+      }
+      $key;
   };
 
 =head1 AUTHOR
