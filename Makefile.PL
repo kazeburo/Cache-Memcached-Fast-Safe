@@ -6,6 +6,7 @@ requires 'Cache::Memcached::Fast' => '0.19';
 requires 'URI::Escape::XS'        => '0.09';
 requires 'parent'                 => '0';
 requires 'POSIX::AtFork'          => '0.02';
+requires 'Digest::SHA'            => '0';
 
 tests 't/*.t';
 author_tests 'xt';
