@@ -161,7 +161,7 @@ Masahiro Nagano E<lt>kazeburo {at} gmail.comE<gt>
 
 =head1 SEE ALSO
 
-L<Cache::Memcached::Fast>
+L<Cache::Memcached::Fast>, L<http://gihyo.jp/dev/feature/01/memcached_advanced/0002> (Japanese)
 
 =head1 LICENSE
 
