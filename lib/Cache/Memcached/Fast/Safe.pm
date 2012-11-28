@@ -31,15 +31,16 @@ sub new {
 
 for my $method ( qw/set cas add replace append prepend incr decr delete/ ) {
     no strict 'refs';
+    my $super = 'SUPER::'.$method;
     *{$method} = sub {
         my $self = shift;
         my $key = shift;
-        my $super = 'SUPER::'.$method;
         $self->$super($SANITIZE_METHOD->($key), @_);
     };
 }
 for my $method (qw/set_multi  cas_multi add_multi replace_multi append_multi prepend_multi incr_multi decr_multi delete_multi/ ) {
     no strict 'refs';
+    my $super = 'SUPER::'.$method;
     *{$method} = sub {
         my $self = shift;
         my @request = @_;
@@ -65,7 +66,6 @@ for my $method (qw/set_multi  cas_multi add_multi replace_multi append_multi pre
             push @request_keys, $key;
             push @sanitized_request, $sanitized_keyval;
         }
-        my $super = 'SUPER::'.$method;
         my $sanitized_result = $self->$super(@sanitized_request);
         my %result;
         for my $key ( keys %$sanitized_result ) {
@@ -86,15 +86,16 @@ for my $method (qw/set_multi  cas_multi add_multi replace_multi append_multi pre
 
 for my $method (qw/get gets/) {
     no strict 'refs';
+    my $super = 'SUPER::'.$method;
     *{$method} = sub {
         my $self = shift;
         my $key = shift;
-        my $super = 'SUPER::'.$method;
         $self->$super($SANITIZE_METHOD->($key));
     };
 }
 for my $method (qw/get_multi gets_multi/) {
     no strict 'refs';
+    my $super = 'SUPER::'.$method;
     *{$method} = sub {
         my $self = shift;
         my @request;
@@ -105,7 +106,6 @@ for my $method (qw/get_multi gets_multi/) {
             push @request, $sanitized_key;
         }
         return {} if ! @request;
-        my $super = 'SUPER::'.$method;
         my $sanitized_result = $self->$super(@request);
         my %result;
         for my $key ( keys %$sanitized_result ) {
