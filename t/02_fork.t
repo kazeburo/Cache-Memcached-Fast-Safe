@@ -14,9 +14,14 @@ use POSIX qw//;
 skip_all_unless_exists 'memcached';
 
 my @memcached;
+my @user = ();
+if ( $> == 0 ) {
+    @user = ('-u','nobody');
+}
+
 for ( 1..5 ) {
     my $port = empty_port();
-    my $proc = proc_guard( scalar which('memcached'), '-p', $port, '-U', 0, '-l', '127.0.0.1' );
+    my $proc = proc_guard( scalar which('memcached'), '-p', $port, '-U', 0, '-l', '127.0.0.1', @user );
     wait_port($port);
     push @memcached, { proc => $proc, port => $port };
 }
