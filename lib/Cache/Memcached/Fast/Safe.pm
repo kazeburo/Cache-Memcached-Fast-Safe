@@ -8,7 +8,7 @@ use Digest::SHA qw/sha1_hex/;
 use parent qw/Cache::Memcached::Fast/;
 use POSIX::AtFork;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $SANITIZE_METHOD = sub {
     my $key = shift;
     $key = uri_escape($key,"\x00-\x20\x7f-\xff");

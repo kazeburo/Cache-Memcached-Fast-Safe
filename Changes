@@ -1,4 +1,7 @@
 Revision history for Perl extension Cache::Memcached::Fast::Safe
 
+0.02    Tue Dec 4 12:31:42 2012
+        - fixed test. memcached can't run as root without the -u switch
+
 0.01    Tue Nov 27 15:15:50 2012
         - original version
