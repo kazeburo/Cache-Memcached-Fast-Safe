@@ -24,11 +24,10 @@ sub new {
     my %args = ref $_[0] ? %{$_[0]} : @_;
     my $mem = $class->SUPER::new(\%args);
     # fork safe
-    my $mem2 = $mem;
+    weaken(my $mem_weaken = $mem);
     POSIX::AtFork->add_to_child(sub {
-        eval { $mem2->disconnect_all };
+        eval { $mem_weaken->disconnect_all };
     });
-    weaken($mem2);
     $mem;
 }
 
