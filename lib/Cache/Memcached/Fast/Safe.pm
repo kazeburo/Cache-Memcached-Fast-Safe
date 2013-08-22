@@ -7,6 +7,7 @@ use URI::Escape::XS qw/uri_escape/;
 use Digest::SHA qw/sha1_hex/;
 use parent qw/Cache::Memcached::Fast/;
 use POSIX::AtFork;
+use Scalar::Util qw/weaken/;
 
 our $VERSION = '0.02';
 our $SANITIZE_METHOD = sub {
@@ -23,9 +24,11 @@ sub new {
     my %args = ref $_[0] ? %{$_[0]} : @_;
     my $mem = $class->SUPER::new(\%args);
     # fork safe
+    my $mem2 = $mem;
     POSIX::AtFork->add_to_child(sub {
-        $mem->disconnect_all;
+        eval { $mem2->disconnect_all };
     });
+    weaken($mem2);
     $mem;
 }
 
