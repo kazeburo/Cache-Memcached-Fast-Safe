@@ -4,8 +4,7 @@ requires 'POSIX::AtFork', '0.02';
 requires 'URI::Escape::XS', '0.09';
 requires 'parent';
 
-on build => sub {
-    requires 'ExtUtils::MakeMaker', '6.36';
+on test => sub {
     requires 'File::Which';
     requires 'Proc::Guard';
     requires 'Test::More';
