@@ -117,6 +117,15 @@ for my $method (qw/get_multi gets_multi/) {
     }
 }
 
+sub get_or_set {
+    my($self, $key, $sub, $expire) = @_;
+    if (my $value = $self->get($key)) {
+        return $value;
+    }
+    my ($value, $ret_expire) = $sub->();
+    $self->set($key, $value, $expire || $ret_expire);
+    $value;
+}
 
 1;
 
@@ -142,6 +151,28 @@ Cache::Memcached::Fast::Safe is subclass of L<Cache::Memcached::Fast>.
 Cache::Memcached::Fast::Safe sanitizes all requested keys for against 
 memcached injection problem. and call disconnect_all automatically after fork 
 for fork-safe.
+
+=head1 ADDITIONAL METHOD
+
+=over 4
+
+=item get_or_set($key:Str, $callback:CodeRef [,$expires:Num])
+
+Get a cache value for $key if it's already cached. If can not retrieve cache values, execute $callback and cache with $expires seconds.
+
+  $memcached->get_or_set('key:941',sub {
+    DB->retrieve(941)
+  },10);
+
+callback can also return expires sec.
+
+  $memcached->get_or_set('key:941',sub {
+    my $val = DB->retrieve(941);
+    return ($val, 10)
+  });
+
+
+=back
 
 =head1 CUSTOMIZE Sanitizer
 

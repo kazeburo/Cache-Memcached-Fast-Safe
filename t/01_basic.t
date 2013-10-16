@@ -183,5 +183,16 @@ ok($cache->remove($keys[2]));
 is(@res, count);
 is((grep { not $_ } @res), 3);
 
+my $get_or_set_counter=0;
+is($cache->get_or_set('get_or_set',sub {
+    $get_or_set_counter++;
+    'get_and_set'
+},10), 'get_and_set');
+is($cache->get_or_set('get_or_set',sub {
+    $get_or_set_counter++;
+    'get_and_set'
+},10), 'get_and_set');
+is($get_or_set_counter,1);
+
 done_testing();
 

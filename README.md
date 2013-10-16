@@ -21,6 +21,25 @@ Cache::Memcached::Fast::Safe sanitizes all requested keys for against
 memcached injection problem. and call disconnect\_all automatically after fork 
 for fork-safe.
 
+# ADDITIONAL METHOD
+
+- get\_or\_set($key:Str, $callback:CodeRef \[,$expires:Num\])
+
+    Get a cache value for $key if it's already cached. If can not retrieve cache values, execute $callback and cache with $expires seconds.
+
+        $memcached->get_or_set('key:941',sub {
+          DB->retrieve(941)
+        },10);
+
+    callback can also return expires sec.
+
+        $memcached->get_or_set('key:941',sub {
+          my $val = DB->retrieve(941);
+          return ($val, 10)
+        });
+
+
+
 # CUSTOMIZE Sanitizer
 
 This module allow to change sanitizing behavior through $Cache::Memcached::Fast::Safe::SANITIZE\_METHOD.
