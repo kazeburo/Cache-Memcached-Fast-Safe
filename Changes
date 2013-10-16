@@ -2,6 +2,10 @@ Revision history for Perl extension Cache::Memcached::Fast::Safe
 
 {{$NEXT}}
 
+0.04 2013-10-16T04:47:07Z
+
+        - add get_or_set
+
 0.03 2013-08-22T08:17:25Z
         - [important] fixed connection leak
         - minil migrate

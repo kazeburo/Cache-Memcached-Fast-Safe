@@ -9,7 +9,7 @@ use parent qw/Cache::Memcached::Fast/;
 use POSIX::AtFork;
 use Scalar::Util qw/weaken/;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 our $SANITIZE_METHOD = sub {
     my $key = shift;
     $key = uri_escape($key,"\x00-\x20\x7f-\xff");
