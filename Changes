@@ -2,6 +2,10 @@ Revision history for Perl extension Cache::Memcached::Fast::Safe
 
 {{$NEXT}}
 
+0.05 2015-03-09T14:52:06Z
+
+        - support touch/touch_multi (Thank you spiritloose)
+
 0.04 2013-10-16T04:47:07Z
 
         - add get_or_set

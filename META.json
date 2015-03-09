@@ -71,7 +71,7 @@
          "web" : "https://github.com/kazeburo/Cache-Memcached-Fast-Safe"
       }
    },
-   "version" : "0.04",
+   "version" : "0.05",
    "x_contributors" : [
       "Jiro Nishiguchi <jiro@cpan.org>",
       "Masahiro Nagano <kazeburo@gmail.com>"
