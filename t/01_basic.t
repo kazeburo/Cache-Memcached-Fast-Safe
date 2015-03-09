@@ -165,6 +165,14 @@ SKIP: {
     is(scalar keys %$res, 0);
 }
 
+SKIP: {
+    skip "memcached 1.4.8 is required for touch commands", 3
+      if $version_num < 10408;
+    ok($cache->touch($keys[0]), 'Touch');
+    my $res = $cache->touch_multi(map { [$_,0] } @keys);
+    is(scalar keys %$res, scalar @keys, 'Number of entries in result');
+    is((grep { $_ != 1 } values %$res), 0);
+}
 
 ok($cache->replace_multi(map { [$_,0] } @keys),'replace_multi to reset to numeric');
 
