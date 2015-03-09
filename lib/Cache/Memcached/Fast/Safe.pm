@@ -31,7 +31,7 @@ sub new {
     $mem;
 }
 
-for my $method ( qw/set cas add replace append prepend incr decr delete/ ) {
+for my $method ( qw/set cas add replace append prepend incr decr delete touch/ ) {
     no strict 'refs';
     my $super = 'SUPER::'.$method;
     *{$method} = sub {
@@ -40,7 +40,7 @@ for my $method ( qw/set cas add replace append prepend incr decr delete/ ) {
         $self->$super($SANITIZE_METHOD->($key), @_);
     };
 }
-for my $method (qw/set_multi  cas_multi add_multi replace_multi append_multi prepend_multi incr_multi decr_multi delete_multi/ ) {
+for my $method (qw/set_multi  cas_multi add_multi replace_multi append_multi prepend_multi incr_multi decr_multi delete_multi touch_multi/ ) {
     no strict 'refs';
     my $super = 'SUPER::'.$method;
     *{$method} = sub {
