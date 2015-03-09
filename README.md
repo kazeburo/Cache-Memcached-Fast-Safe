@@ -6,17 +6,15 @@ Cache::Memcached::Fast::Safe - Cache::Memcached::Fast with sanitizing keys and f
 
     use Cache::Memcached::Fast::Safe;
     
-
     my $memd = Cache::Memcached::Fast::Safe->new({
       servers => [..]
     });
     
-
     #This module supports all method that Cache::Memcached::Fast has.
 
 # DESCRIPTION
 
-Cache::Memcached::Fast::Safe is subclass of [Cache::Memcached::Fast](http://search.cpan.org/perldoc?Cache::Memcached::Fast).
+Cache::Memcached::Fast::Safe is subclass of [Cache::Memcached::Fast](https://metacpan.org/pod/Cache::Memcached::Fast).
 Cache::Memcached::Fast::Safe sanitizes all requested keys for against 
 memcached injection problem. and call disconnect\_all automatically after fork 
 for fork-safe.
@@ -38,8 +36,6 @@ for fork-safe.
           return ($val, 10)
         });
 
-
-
 # CUSTOMIZE Sanitizer
 
 This module allow to change sanitizing behavior through $Cache::Memcached::Fast::Safe::SANITIZE\_METHOD.
@@ -60,7 +56,7 @@ Masahiro Nagano <kazeburo {at} gmail.com>
 
 # SEE ALSO
 
-[Cache::Memcached::Fast](http://search.cpan.org/perldoc?Cache::Memcached::Fast), [http://gihyo.jp/dev/feature/01/memcached\_advanced/0002](http://gihyo.jp/dev/feature/01/memcached\_advanced/0002) (Japanese)
+[Cache::Memcached::Fast](https://metacpan.org/pod/Cache::Memcached::Fast), [http://gihyo.jp/dev/feature/01/memcached\_advanced/0002](http://gihyo.jp/dev/feature/01/memcached_advanced/0002) (Japanese)
 
 # LICENSE
 
