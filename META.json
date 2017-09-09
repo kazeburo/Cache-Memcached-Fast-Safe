@@ -45,7 +45,6 @@
             "Cache::Memcached::Fast" : "0.23",
             "Digest::SHA" : "0",
             "POSIX::AtFork" : "0.02",
-            "URI::Escape::XS" : "0.09",
             "parent" : "0"
          }
       },
