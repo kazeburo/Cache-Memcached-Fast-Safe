@@ -4,7 +4,7 @@
       "Masahiro Nagano <kazeburo {at} gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.2.1, CPAN::Meta::Converter version 2.141170",
+   "generated_by" : "Minilla/v3.0.13, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
@@ -28,7 +28,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.38"
+            "Module::Build::Tiny" : "0.035"
          }
       },
       "develop" : {
@@ -70,9 +70,11 @@
          "web" : "https://github.com/kazeburo/Cache-Memcached-Fast-Safe"
       }
    },
-   "version" : "0.05",
+   "version" : "0.06",
    "x_contributors" : [
       "Jiro Nishiguchi <jiro@cpan.org>",
-      "Masahiro Nagano <kazeburo@gmail.com>"
-   ]
+      "Masahiro Nagano <kazeburo@gmail.com>",
+      "mono <mono@mono0x.net>"
+   ],
+   "x_serialization_backend" : "JSON::PP version 2.27300_01"
 }

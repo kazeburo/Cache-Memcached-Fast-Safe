@@ -8,7 +8,7 @@ use parent qw/Cache::Memcached::Fast/;
 use POSIX::AtFork;
 use Scalar::Util qw/weaken/;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 our $SANITIZE_METHOD = \&_sanitize_method;
 
 {

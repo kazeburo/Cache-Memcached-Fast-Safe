@@ -54,7 +54,7 @@ Default sanitizer is
 
 # AUTHOR
 
-Masahiro Nagano <kazeburo {at} gmail.com>
+Masahiro Nagano &lt;kazeburo {at} gmail.com>
 
 # SEE ALSO
 
